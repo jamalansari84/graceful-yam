@@ -2,5 +2,11 @@
 publish = "public"
 command = "./stackbit-build.sh"
 
-  [build.environment]
+[build.environment]
+ HUGO_VERSION = "0.47"
+
+ [context.production.environment]
   HUGO_VERSION = "0.47"
+
+ [context.deploy-preview.environment]
+ HUGO_VERSION = "0.53"

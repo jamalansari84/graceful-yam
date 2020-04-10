@@ -1,6 +1,6 @@
 ---
 title: About
-headline: We are Planty
+headline: We are Veterans Pride
 introduction: >-
   Well, not really. We’re [Snipcart](http://bit.ly/2YB7AUL)—a bunch of geeks
   from Québec City. Planty is a theme we built for
