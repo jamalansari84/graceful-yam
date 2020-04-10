@@ -1,0 +1,13 @@
+{{ $site := .Site }}
+{{ $page := .page }}
+<ul class="store__nav-items">
+    {{ range $item := $site.Menus.categories }}
+        {{ $isCurrentPage := eq $page.Title $item.Name }}
+        {{ $isActive := cond $isCurrentPage true false }}
+        <li class="store__nav-item">
+            <a href="{{ $item.URL | relURL }}" class="store__nav-item-link{{ if $isActive }} store__nav-item-link--active{{ end }}">
+                {{ $item.Name }}
+            </a>
+        </li>
+    {{ end }}
+</ul>

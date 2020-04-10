@@ -1,0 +1,69 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: static/admin
+webhook_url: 'https://api.stackbit.com/project/5e8fe389b67cf500194f42f6/webhook/forestry'
+sections:
+  - type: document
+    label: Global site config
+    path: config.yaml
+    templates:
+      - config
+  - type: document
+    label: Home
+    path: content/_index.md
+    templates:
+      - index
+  - type: directory
+    path: content
+    match: '**/*'
+    exclude: '{_index.md,store.md,faq.md,about.md}'
+    label: Page
+    create: all
+    templates:
+      - page
+  - type: document
+    label: Store
+    path: content/store.md
+    templates:
+      - store
+  - type: document
+    label: FAQ
+    path: content/faq.md
+    templates:
+      - faq
+  - type: document
+    label: About
+    path: content/about.md
+    templates:
+      - about
+  - type: directory
+    path: content/category
+    match: '**/*'
+    label: Categories
+    create: all
+    templates:
+      - categories
+  - type: document
+    label: Promotion
+    path: data/promotion.json
+    templates:
+      - promotion
+  - type: document
+    label: Testimonials
+    path: data/testimonials.json
+    templates:
+      - testimonials
+  - type: directory
+    path: content/products
+    match: '**/*'
+    label: Product
+    create: all
+    templates:
+      - products
+upload_dir: static/images
+public_path: /images
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ':filename:'
+version: '0.47'

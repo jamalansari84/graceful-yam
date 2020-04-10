@@ -1,0 +1,8 @@
+{{ $image := .image }}
+{{ $alt := .alt }}
+{{ $cssClass := .cssClass }}
+<picture>
+  <source srcset="{{ $image.optimized | relURL }}" type="image/webp">
+  <source srcset="{{ $image.fallback | relURL }}" type="image/jpeg"> 
+  <img src="{{ $image.fallback | relURL }}" {{ if $alt }}alt="{{ $alt }}"{{ end }}  {{ if $cssClass }}class="{{ $cssClass }}"{{ end }}>
+</picture>

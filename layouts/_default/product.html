@@ -1,0 +1,54 @@
+{{ define "content" }}
+    {{ $category_page := index (where ((.Site.GetPage "section" "/category").Pages) "Params.slug" .Params.category) 0 }}
+    <main class="content">
+        <section class="product content__row content__row--bleed">  
+            <div class="product__background-left-overlay"></div>
+            <div class="product__background-left"></div>
+            <div class="product__background-right"></div>
+            <div class="product__header">
+                <a href="/store" class="product__back-to-store-link">
+                    <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.73859 4.30914H19.75V5.59286H2.63961L6.06986 8.98864L5.17449 9.875L0.25 5L5.17449 0.125L6.06986 1.01136L2.73859 4.30914Z" fill="#88DD9B"/>
+                    </svg>                        
+                    see all products
+                </a>
+            </div>
+            <figure class="product__figure">
+                {{ $include_dict := dict "image" .Params.images.default.original "alt" .Title "cssClass" "product__image" }}
+                {{ partial "picture.html" $include_dict }}
+            </figure>
+            <div class="product__details">
+                <h1 class="product__title">
+                    {{ .Title }}
+                </h1>
+                <h2 class="product__category"> 
+                    <a href="{{ $category_page.URL }}"> {{ $category_page.Title }} </a>
+                </h2>
+                <div class="product__price">
+                    ${{ .Params.price }}
+                </div>
+
+                <article class="product__description">
+                    {{ .Params.description }}
+                </article>
+
+                {{ $include_dict := dict "product_page" . }}
+                {{ partial "buy_button.html" $include_dict }}
+            </div>
+        </section>
+
+        <section class="content__row">
+            <h2 class="content__row-title">Related</h2>
+            {{ $product_pages := where ((where ((.Site.GetPage "section" "/products").Pages) "Params.category" $category_page.Params.slug).ByParam "title") "Params.id" "!=" .Params.id }}
+            {{ $include_dict := dict "product_pages" $product_pages "cssClass" "product-grid--draggable" }}
+            {{ partial "product_grid.html" $include_dict }}
+        </section>
+
+        <a href="/store" class="content__row content__row--bleed product__back-to-store">
+            <svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.73859 4.30914H19.75V5.59286H2.63961L6.06986 8.98864L5.17449 9.875L0.25 5L5.17449 0.125L6.06986 1.01136L2.73859 4.30914Z" fill="white"/>
+            </svg>                        
+            see all products
+        </a>
+    </main>
+{{ end }}

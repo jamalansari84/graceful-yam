@@ -1,0 +1,36 @@
+{{ define "content" }}
+<main class="content store">
+        <div class="content__row content__row--direction-row store__head">
+            <h1 class="store__title">{{ .Title }}</h1>
+        </div>
+    
+        <div class="content__row store__container">
+            <nav class="store__nav">
+                {{ $include_dict := dict "page" . "Site" .Site }}
+                {{ partial "nav_categories.html" $include_dict }}
+            </nav>
+            
+            <section class="store__products">
+                {{ $category_product_pages := (where ((.Site.GetPage "section" "/products").Pages) "Params.category" .Params.slug).ByParam "name" }}
+                {{ $include_dict := dict "product_pages" $category_product_pages "cssClass" "store__product-grid" }}
+                {{ partial "product_grid.html" $include_dict }}
+            </section>
+        </div>
+    
+        <section class="content__row">
+            <h2 class="content__row-title content__row-title--medium">
+                <svg width="29" height="25" viewBox="0 0 29 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M28.152 3.4188C27.2129 1.75821 21.3251 -3.80243 14.4999 4.24829C7.33226 -3.80243 1.78532 1.75821 0.847792 3.4188C-0.859337 6.48936 0.164613 11.138 2.55492 13.3791L14.5015 25L26.4482 13.3791C28.8352 11.138 29.8592 6.49096 28.1521 3.4188H28.152Z" fill="#FDFDFD"/>
+                </svg>                    
+                Best Sellers
+            </h2>
+            {{ $featured_product_pages := where ((.Site.GetPage "section" "/products").Pages) "Params.featured" true }}
+            {{ $include_dict := dict "product_pages" $featured_product_pages }}
+            {{ partial "featured_products.html" $include_dict }}
+        </section>
+    
+        {{ $include_dict := dict "Site" .Site }}
+        {{ partial "promo_section.html" $include_dict }}
+    </main>
+
+{{ end }}

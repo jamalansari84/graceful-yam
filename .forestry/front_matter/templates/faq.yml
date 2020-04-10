@@ -1,0 +1,43 @@
+---
+label: FAQ
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+  - type: text
+    name: headline
+    label: Headline
+  - type: textarea
+    name: introduction
+    label: Introduction
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: field_group_list
+    name: questions
+    label: Questions
+    description: List of questions to show on the FAQ page
+    fields:
+      - type: text
+        name: question
+        label: Question
+      - type: textarea
+        name: answer
+        label: Answer
+        config:
+          wysiwyg: true
+          schema:
+            format: markdown
+    config:
+      labelField: question
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: faq
+    config:
+      required: true
+pages:
+  - faq.md

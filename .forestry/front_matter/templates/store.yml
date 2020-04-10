@@ -1,0 +1,17 @@
+---
+label: Store
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: store
+    config:
+      required: true
+pages:
+  - store.md

@@ -1,0 +1,565 @@
+stackbitVersion: ~0.2.0
+ssgName: hugo
+ssgVersion: 0.1.12
+buildCommand: ./ssg-build.sh
+publishDir: public
+staticDir: static
+uploadDir: images
+dataDir: data
+pagesDir: content
+pageLayoutKey: layout
+metadata:
+  title: Snipcart
+  description: An e-commerce theme powered by Snipcart
+  author: Snipcart
+  authorURL: 'https://snipcart.com'
+models:
+  config:
+    type: config
+    label: Global site config
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: Site title
+        required: true
+      - type: string
+        name: baseURL
+        label: Base URL
+        description: Hostname (and path) to the root
+        hidden: true
+      - type: object
+        name: params
+        label: Params
+        description: Site parameters
+        required: true
+        fields:
+          - type: string
+            label: Title
+            name: title
+          - type: string
+            label: Snipcart JavaScript file URL
+            name: snipcart_js
+          - type: string
+            label: Snipcart CSS file URL
+            name: snipcart_css
+          - type: string
+            label: Snipcart public API key
+            name: snipcart_api_key
+          - type: object
+            label: Logos
+            name: logos
+            fields:
+              - type: object
+                name: light
+                label: Light
+                fields:
+                  - type: image
+                    name: optimized
+                    label: Optimized (WEBP or similar)
+                  - type: image
+                    name: fallback
+                    label: Fallback (JPG or PNG)
+              - type: object
+                name: dark
+                label: Dark
+                fields:
+                  - type: image
+                    name: optimized
+                    label: Optimized (WEBP or similar)
+                  - type: image
+                    name: fallback
+                    label: Fallback (JPG or PNG)
+          - type: enum
+            label: Color Palette
+            name: palette
+            options:
+              - default
+          - type: object
+            name: palettes
+            label: Palettes
+            hidden: true
+            fields:
+              - type: palette
+                name: default
+                label: Default
+      - type: site_menus
+        name: menu
+        label: Site Menus
+        description: Menu items not related to a specific page
+      - type: list
+        name: disableKinds
+        label: Disable Kinds
+        description: Enable disabling of all pages of the specified Kinds.
+        items:
+          type: enum
+          options:
+            - page
+            - home
+            - section
+            - taxonomy
+            - taxonomyTerm
+            - RSS
+            - sitemap
+            - robotsTXT
+            - '404'
+        hidden: true
+      - type: boolean
+        name: uglyURLs
+        label: Ugly URLs
+        description: >-
+          When enabled, creates URL of the form /filename.html instead of
+          /filename/.
+        hidden: true
+  palette:
+    type: object
+    label: Palette
+    fields:
+      - type: object
+        name: sass
+        label: SASS
+        fields:
+          - type: string
+            label: Default light
+            name: default
+          - type: string
+            label: Light
+            name: light
+          - type: string
+            label: Medium
+            name: medium
+          - type: string
+            label: Dark
+            name: dark
+          - type: string
+            label: Active
+            name: active
+          - type: string
+            label: Active light
+            name: active_light
+          - type: string
+            label: Active medium
+            name: active_medium
+          - type: string
+            label: Active dark
+            name: active_dark
+          - type: string
+            label: Dark grey
+            name: dark_grey
+          - type: string
+            label: Light grey
+            name: light_grey
+          - type: string
+            name: bg_image_primary_optimized
+            label: Primary Optimized Backround Image
+            description: Primary Optimized Backround Image (WEBP or similar)
+          - type: string
+            name: bg_image_primary_fallback
+            label: Primary Fallback Backround Image
+            description: Primary Fallback Backround Image (JPG or PNG)
+          - type: string
+            name: bg_image_secondary_optimized
+            label: Secondary Optimized Backround Image
+            description: Secondary Optimized Backround Image (WEBP or similar)
+          - type: string
+            name: bg_image_secondary_fallback
+            label: Secondary Fallback Backround Image
+            description: Secondary Fallback Backround Image (JPG or PNG)
+          - type: string
+            name: bg_image_product_optimized
+            label: Product Optimized Backround Image
+            description: Product Optimized Backround Image (WEBP or similar)
+          - type: string
+            name: bg_image_product_fallback
+            label: Product Fallback Backround Image
+            description: Product Fallback Backround Image (JPG or PNG)
+          - type: string
+            name: bg_image_cart_optimized
+            label: Cart Optimized Backround Image
+            description: Cart Optimized Backround Image (WEBP or similar)
+          - type: string
+            name: bg_image_cart_fallback
+            label: Cart Fallback Backround Image
+            description: Cart Fallback Backround Image (JPG or PNG)
+  index:
+    type: page
+    label: Home
+    layout: index
+    file: _index.md
+    singleInstance: true
+    fields:
+      - type: string
+        label: Title
+        name: title
+      - type: boolean
+        label: Is home page
+        name: isHome
+        hidden: true
+      - type: page_menus
+        name: menu
+        label: Home Menus
+        description: Which menus should this page show up in
+  page:
+    type: page
+    label: Page
+    layout: page
+    fields:
+      - type: page_menus
+        name: menu
+        label: Page Menus
+        description: Which menus should this page show up in
+  store:
+    type: page
+    label: Store
+    layout: store
+    file: store.md
+    singleInstance: true
+    hideContent: true
+    fields:
+      - type: string
+        label: Title
+        name: title
+      - type: page_menus
+        name: menu
+        label: Store Menus
+        description: Which menus should this page show up in
+  faq:
+    type: page
+    label: FAQ
+    layout: faq
+    file: faq.md
+    singleInstance: true
+    fields:
+      - type: string
+        name: title
+        label: Title
+      - type: string
+        name: headline
+        label: Headline
+      - type: markdown
+        name: introduction
+        label: Introduction
+      - type: list
+        name: questions
+        label: Questions
+        description: List of questions to show on the FAQ page
+        items:
+          type: object
+          labelField: question
+          fields:
+            - type: string
+              name: question
+              label: Question
+            - type: markdown
+              name: answer
+              label: Answer
+      - type: page_menus
+        name: menu
+        label: FAQ Menus
+        description: Which menus should this page show up in
+  about:
+    type: page
+    label: About
+    layout: about
+    file: about.md
+    singleInstance: true
+    fields:
+      - type: string
+        label: Title
+        name: title
+      - type: string
+        label: Headline
+        name: headline
+      - type: markdown
+        label: Introduction
+        name: introduction
+      - type: list
+        name: bulletpoints
+        label: Bulletpoints
+        description: List of bulletpoints to show on About page
+        items:
+          type: object
+          labelField: title
+          fields:
+            - type: string
+              name: title
+              label: Title
+            - type: markdown
+              name: description
+              label: Description
+            - type: object
+              name: image
+              label: Image
+              fields:
+                - type: image
+                  name: optimized
+                  label: Optimized (WEBP or similar)
+                - type: image
+                  name: fallback
+                  label: Fallback (JPG or PNG)
+      - type: page_menus
+        name: menu
+        label: About Menus
+        description: Which menus should this page show up in
+  categories:
+    type: page
+    label: Categories
+    hideContent: true
+    layout: category
+    folder: category
+    fields:
+      - type: string
+        name: slug
+        label: Slug
+      - type: string
+        name: title
+        label: Title
+      - type: enum
+        name: section
+        label: Section
+        options:
+          - Store
+          - About
+          - Home
+      - type: page_menus
+        name: menu
+        label: Categories Menus
+        description: Which menus should this page show up in
+  promotion:
+    type: data
+    file: promotion.json
+    label: Promotion
+    fields:
+      - type: string
+        name: title
+        label: Title
+      - type: string
+        name: subtitle
+        label: subtitle
+      - type: object
+        name: image
+        label: Image
+        fields:
+          - type: image
+            name: optimized
+            label: Optimized (WEBP or similar)
+          - type: image
+            name: fallback
+            label: Fallback (JPG or PNG)
+      - type: object
+        name: cta
+        label: Call to action
+        fields:
+          - type: string
+            name: text
+            label: Text
+          - type: string
+            name: link
+            label: Link
+  testimonials:
+    type: data
+    file: testimonials.json
+    label: Testimonials
+    fields:
+      - type: list
+        name: data
+        label: Testimonials
+        description: A list of testimonials
+        items:
+          type: object
+          labelField: text
+          fields:
+            - type: string
+              name: text
+              label: Text
+            - type: object
+              name: author
+              label: Author
+              fields:
+                - type: string
+                  name: name
+                  label: Name
+                - type: string
+                  name: location
+                  label: Location
+  products:
+    type: page
+    label: Product
+    layout: product
+    folder: products
+    fields:
+      - type: string
+        name: id
+        label: ID
+      - type: string
+        name: title
+        label: Title
+      - type: string
+        name: description
+        label: Description
+      - type: string
+        name: price
+        label: Price
+      - type: object
+        name: images
+        label: Images
+        fields:
+          - type: object
+            label: Default
+            name: default
+            fields:
+              - type: object
+                name: thumbnail
+                label: Thumbnail
+                fields:
+                  - type: image
+                    name: optimized
+                    label: Optimized (WEBP or similar)
+                  - type: image
+                    name: fallback
+                    label: Fallback (JPG or PNG)
+              - type: object
+                name: original
+                label: Original
+                fields:
+                  - type: image
+                    name: optimized
+                    label: Optimized (WEBP or similar)
+                  - type: image
+                    name: fallback
+                    label: Fallback (JPG or PNG)
+          - type: object
+            label: Featured
+            name: featured
+            fields:
+              - type: object
+                name: thumbnail
+                label: Thumbnail
+                fields:
+                  - type: image
+                    name: optimized
+                    label: Optimized (WEBP or similar)
+                  - type: image
+                    name: fallback
+                    label: Fallback (JPG or PNG)
+              - type: object
+                name: original
+                label: Original
+                fields:
+                  - type: image
+                    name: optimized
+                    label: Optimized (WEBP or similar)
+                  - type: image
+                    name: fallback
+                    label: Fallback (JPG or PNG)
+      - type: enum
+        name: category
+        label: Category
+        options:
+          - summer
+          - europe
+          - bigplants
+          - cactuses
+      - type: boolean
+        name: featured
+        label: Featured
+      - type: enum
+        name: section
+        label: Section
+        options:
+          - Store
+          - About
+          - Home
+      - type: page_menus
+        name: menu
+        label: Product Menus
+        description: Which menus should this page show up in
+  site_menus:
+    type: object
+    label: Site Menus
+    labelField: null
+    description: >-
+      Site menus model, defines list of menus that can be specified from within
+      site configuration
+    fields:
+      - type: list
+        name: main
+        label: Main menu
+        description: List of items for Main menu
+        items:
+          type: site_menu_item
+      - type: list
+        name: categories
+        label: Categories menu
+        description: List of items for Categories menu
+        items:
+          type: site_menu_item
+  site_menu_item:
+    type: object
+    label: Site Menu Item
+    labelField: name
+    description: 'Site menu item model, defines fields for a single site menu item'
+    fields:
+      - type: string
+        name: identifier
+        label: Identifier
+        description: >-
+          The identifier of a menu item could be used as a parent menu of
+          another menu item
+        required: true
+      - type: string
+        name: name
+        label: Title
+        description: The title of the menu item
+        required: true
+      - type: string
+        name: url
+        label: URL
+        description: The URL the menu item links to
+        required: true
+      - type: number
+        name: weight
+        label: Weight
+        description: Position for sorting
+      - type: string
+        name: parent
+        label: Parent Menu Identifier
+        description: The parent of an entry should be the identifier of another entry.
+  page_menus:
+    type: object
+    label: Page Menus
+    labelField: null
+    description: 'Page menus model, defines menus that can be specified from within pages'
+    fields:
+      - type: page_menu_item
+        name: main
+        label: Main menu item
+        description: Main menu item for this page
+      - type: page_menu_item
+        name: categories
+        label: Categories menu item
+        description: Categories menu item for this page
+  page_menu_item:
+    type: object
+    label: Page Menu Item
+    labelField: name
+    description: 'Page menu item model, defines fields for a single page menu item'
+    fields:
+      - type: string
+        name: name
+        label: Title
+        description: The title of the menu item
+      - type: number
+        name: weight
+        label: Weight
+        description: Position for sorting
+      - type: string
+        name: identifier
+        label: Identifier
+        description: >-
+          The identifier of a menu item could be used as a parent menu of
+          another menu item
+      - type: string
+        name: parent
+        label: Parent Menu Identifier
+        description: The parent of an entry should be the identifier of another entry.

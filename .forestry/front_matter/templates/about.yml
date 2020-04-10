@@ -1,0 +1,53 @@
+---
+label: About
+is_partial: false
+fields:
+  - type: text
+    name: title
+    label: Title
+  - type: text
+    name: headline
+    label: Headline
+  - type: textarea
+    name: introduction
+    label: Introduction
+    config:
+      wysiwyg: true
+      schema:
+        format: markdown
+  - type: field_group_list
+    name: bulletpoints
+    label: Bulletpoints
+    description: List of bulletpoints to show on About page
+    fields:
+      - type: text
+        name: title
+        label: Title
+      - type: textarea
+        name: description
+        label: Description
+        config:
+          wysiwyg: true
+          schema:
+            format: markdown
+      - type: field_group
+        name: image
+        label: Image
+        fields:
+          - type: file
+            name: optimized
+            label: Optimized (WEBP or similar)
+          - type: file
+            name: fallback
+            label: Fallback (JPG or PNG)
+    config:
+      labelField: title
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: about
+    config:
+      required: true
+pages:
+  - about.md

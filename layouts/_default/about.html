@@ -1,0 +1,21 @@
+{{ define "content" }}
+<main class="content about">
+  {{ $include_dict := dict "page" . }}
+  {{ partial "static_header.html" $include_dict }}
+  {{ range $bulletpoint := .Params.bulletpoints }}
+    <section class="content__row about__section">
+      {{ $include_dict := dict "image" $bulletpoint.image "alt" $bulletpoint.title "cssClass" "about__section-image" }}
+      {{ partial "picture.html" $include_dict }}
+      <div class="about__section-content-container">
+        <h2 class="about__section-title">{{ $bulletpoint.title }}</h2>
+        <div class="about__section-content">
+          {{ partial "markdownify-block" $bulletpoint.description }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+
+  {{ $include_dict := dict "Site" .Site }}
+  {{ partial "promo_section.html" $include_dict }} 
+</main>
+{{ end }}

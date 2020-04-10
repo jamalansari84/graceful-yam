@@ -1,0 +1,33 @@
+---
+label: Categories
+hide_body: true
+is_partial: false
+fields:
+  - type: text
+    name: slug
+    label: Slug
+  - type: text
+    name: title
+    label: Title
+  - type: select
+    name: section
+    label: Section
+    config:
+      source:
+        type: custom
+      options:
+        - Store
+        - About
+        - Home
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: category
+    config:
+      required: true
+pages:
+  - category/bigplants.md
+  - category/cactuses.md
+  - category/europe.md
+  - category/summer.md

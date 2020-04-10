@@ -1,0 +1,109 @@
+---
+label: Product
+is_partial: false
+fields:
+  - type: text
+    name: id
+    label: ID
+  - type: text
+    name: title
+    label: Title
+  - type: text
+    name: description
+    label: Description
+  - type: text
+    name: price
+    label: Price
+  - type: field_group
+    name: images
+    label: Images
+    fields:
+      - type: field_group
+        name: default
+        label: Default
+        fields:
+          - type: field_group
+            name: thumbnail
+            label: Thumbnail
+            fields:
+              - type: file
+                name: optimized
+                label: Optimized (WEBP or similar)
+              - type: file
+                name: fallback
+                label: Fallback (JPG or PNG)
+          - type: field_group
+            name: original
+            label: Original
+            fields:
+              - type: file
+                name: optimized
+                label: Optimized (WEBP or similar)
+              - type: file
+                name: fallback
+                label: Fallback (JPG or PNG)
+      - type: field_group
+        name: featured
+        label: Featured
+        fields:
+          - type: field_group
+            name: thumbnail
+            label: Thumbnail
+            fields:
+              - type: file
+                name: optimized
+                label: Optimized (WEBP or similar)
+              - type: file
+                name: fallback
+                label: Fallback (JPG or PNG)
+          - type: field_group
+            name: original
+            label: Original
+            fields:
+              - type: file
+                name: optimized
+                label: Optimized (WEBP or similar)
+              - type: file
+                name: fallback
+                label: Fallback (JPG or PNG)
+  - type: select
+    name: category
+    label: Category
+    config:
+      source:
+        type: custom
+      options:
+        - summer
+        - europe
+        - bigplants
+        - cactuses
+  - type: boolean
+    name: featured
+    label: Featured
+  - type: select
+    name: section
+    label: Section
+    config:
+      source:
+        type: custom
+      options:
+        - Store
+        - About
+        - Home
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: product
+    config:
+      required: true
+pages:
+  - products/plant1.md
+  - products/plant2.md
+  - products/plant3.md
+  - products/plant4.md
+  - products/plant5.md
+  - products/plant6.md
+  - products/plant7.md
+  - products/plant8.md
+  - products/plant9.md

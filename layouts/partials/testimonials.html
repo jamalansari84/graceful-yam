@@ -1,0 +1,11 @@
+{{ $testimonials := .testimonials }}
+<div class="quotes">
+    {{ range $testimonial := $testimonials }}
+        <div class="quotes__item">
+            <img src="{{ "images/quotes.svg" | relURL }}" alt="quotation mark icon" class="quotes__icon">
+            <div class="quotes__text">{{ $testimonial.text }}</div>
+            <div class="quotes__author">{{ $testimonial.author.name }}<span class="quotes__location">, {{ $testimonial.author.location }}</span></div>
+        </div>
+        <div class="quotes__separator"></div>
+    {{ end }}
+</div>

@@ -1,0 +1,12 @@
+---
+label: Page
+is_partial: false
+fields:
+  - type: text
+    name: layout
+    label: Layout
+    hidden: true
+    default: page
+    config:
+      required: true
+pages: []

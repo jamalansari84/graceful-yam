@@ -1,0 +1,20 @@
+{{ $product_pages := .product_pages }}
+<ul class="product-grid product-grid--draggable">
+    {{ range $product_page := $product_pages }}
+        <li class="product-grid__item">
+            <figure data-href="{{ $product_page.URL }}" class="js-figure-link product-grid__item-figure js-figure-link">
+                {{ $include_dict := dict "image" $product_page.Params.images.featured.thumbnail "alt" $product_page.Title "cssClass" "product-grid__item-image product-grid__item-image--featured" }}
+                {{ partial "picture.html" $include_dict }}
+                <figcaption>
+                    {{ $include_dict := dict "product_page" $product_page "component" "product-grid" }}
+                    {{ partial "small_buy_button.html" $include_dict }}
+                </figcaption>
+            </figure>
+            <div class="product-grid__definition">
+                <h3 class="product-grid__title"> <a href="{{ $product_page.URL }}"> {{ $product_page.Title }} </a> </h3>
+                <span class="product-grid__category"> {{ $product_page.Params.category }} </span>
+                <span class="product-grid__price"> ${{ $product_page.Params.price }} </span>
+            </div>
+        </li>
+    {{ end }}
+</ul>

@@ -1,0 +1,39 @@
+title: Snipcart
+baseURL: /
+params:
+  snipcart_js: 'https://cdn.snipcart.com/themes/v3.0.4/default/snipcart.js'
+  snipcart_css: 'https://cdn.snipcart.com/themes/v3.0.4/default/snipcart.css'
+  snipcart_api_key: ''
+  logos:
+    light:
+      optimized: images/logo-white.svg
+      fallback: images/logo-white.svg
+    dark:
+      optimized: images/logo.svg
+      fallback: images/logo.svg
+  palette: default
+  palettes:
+    default:
+      sass:
+        default: '#FFFFFF'
+        light: '#F0F0F0'
+        medium: '#6B797A'
+        dark: '#384647'
+        active: '#88DD9B'
+        active_light: '#C0FDB6'
+        active_medium: '#5C9174'
+        active_dark: '#547567'
+        dark_grey: '#273132'
+        light_grey: '#6B797A'
+        bg_image_primary_optimized: /images/header.webp
+        bg_image_primary_fallback: /images/header.jpg
+        bg_image_secondary_optimized: /images/leaf-light-grey.svg
+        bg_image_secondary_fallback: /images/leaf-light-grey.svg
+        bg_image_product_optimized: /images/leaf.svg
+        bg_image_product_fallback: /images/leaf.svg
+        bg_image_cart_optimized: /images/cart-bg.webp
+        bg_image_cart_fallback: /images/header.jpg
+disableKinds:
+  - RSS
+  - taxonomy
+  - taxonomyTerm

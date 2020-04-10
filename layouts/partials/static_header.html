@@ -1,0 +1,7 @@
+{{ $page := .page }}
+<section class="content__row content__row--bleed static-header__header">
+  <h1 class="static-header__title content__row">{{ $page.Params.headline }}</h1>
+  <div class="content__row static-header__content">
+    {{ partial "markdownify-block" $page.Params.introduction }}
+  </div>
+</section>

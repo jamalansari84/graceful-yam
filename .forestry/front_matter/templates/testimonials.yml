@@ -1,0 +1,25 @@
+---
+label: Testimonials
+hide_body: true
+is_partial: false
+fields:
+  - type: field_group_list
+    name: data
+    label: Testimonials
+    description: A list of testimonials
+    fields:
+      - type: text
+        name: text
+        label: Text
+      - type: field_group
+        name: author
+        label: Author
+        fields:
+          - type: text
+            name: name
+            label: Name
+          - type: text
+            name: location
+            label: Location
+    config:
+      labelField: text

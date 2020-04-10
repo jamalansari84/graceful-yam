@@ -1,0 +1,71 @@
+---
+label: Palette
+hide_body: true
+is_partial: true
+fields:
+  - type: field_group
+    name: sass
+    label: SASS
+    fields:
+      - type: text
+        name: default
+        label: Default light
+      - type: text
+        name: light
+        label: Light
+      - type: text
+        name: medium
+        label: Medium
+      - type: text
+        name: dark
+        label: Dark
+      - type: text
+        name: active
+        label: Active
+      - type: text
+        name: active_light
+        label: Active light
+      - type: text
+        name: active_medium
+        label: Active medium
+      - type: text
+        name: active_dark
+        label: Active dark
+      - type: text
+        name: dark_grey
+        label: Dark grey
+      - type: text
+        name: light_grey
+        label: Light grey
+      - type: text
+        name: bg_image_primary_optimized
+        label: Primary Optimized Backround Image
+        description: Primary Optimized Backround Image (WEBP or similar)
+      - type: text
+        name: bg_image_primary_fallback
+        label: Primary Fallback Backround Image
+        description: Primary Fallback Backround Image (JPG or PNG)
+      - type: text
+        name: bg_image_secondary_optimized
+        label: Secondary Optimized Backround Image
+        description: Secondary Optimized Backround Image (WEBP or similar)
+      - type: text
+        name: bg_image_secondary_fallback
+        label: Secondary Fallback Backround Image
+        description: Secondary Fallback Backround Image (JPG or PNG)
+      - type: text
+        name: bg_image_product_optimized
+        label: Product Optimized Backround Image
+        description: Product Optimized Backround Image (WEBP or similar)
+      - type: text
+        name: bg_image_product_fallback
+        label: Product Fallback Backround Image
+        description: Product Fallback Backround Image (JPG or PNG)
+      - type: text
+        name: bg_image_cart_optimized
+        label: Cart Optimized Backround Image
+        description: Cart Optimized Backround Image (WEBP or similar)
+      - type: text
+        name: bg_image_cart_fallback
+        label: Cart Fallback Backround Image
+        description: Cart Fallback Backround Image (JPG or PNG)
