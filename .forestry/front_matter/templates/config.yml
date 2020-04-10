@@ -1,106 +1,103 @@
 ---
 label: Global site config
 hide_body: true
-is_partial: false
 fields:
+- type: text
+  name: title
+  label: Title
+  description: Site title
+  config:
+    required: true
+- type: text
+  name: baseURL
+  label: Base URL
+  description: Hostname (and path) to the root
+  hidden: true
+- type: field_group
+  name: params
+  label: Params
+  description: Site parameters
+  config:
+    required: true
+  fields:
   - type: text
     name: title
     label: Title
-    description: Site title
-    config:
-      required: true
   - type: text
-    name: baseURL
-    label: Base URL
-    description: Hostname (and path) to the root
-    hidden: true
+    name: snipcart_js
+    label: Snipcart JavaScript file URL
+  - type: text
+    name: snipcart_css
+    label: Snipcart CSS file URL
+  - type: text
+    name: snipcart_api_key
+    label: Snipcart public API key
   - type: field_group
-    name: params
-    label: Params
-    description: Site parameters
-    config:
-      required: true
+    name: logos
+    label: Logos
     fields:
-      - type: text
-        name: title
-        label: Title
-      - type: text
-        name: snipcart_js
-        label: Snipcart JavaScript file URL
-      - type: text
-        name: snipcart_css
-        label: Snipcart CSS file URL
-      - type: text
-        name: snipcart_api_key
-        label: Snipcart public API key
-      - type: field_group
-        name: logos
-        label: Logos
-        fields:
-          - type: field_group
-            name: light
-            label: Light
-            fields:
-              - type: file
-                name: optimized
-                label: Optimized (WEBP or similar)
-              - type: file
-                name: fallback
-                label: Fallback (JPG or PNG)
-          - type: field_group
-            name: dark
-            label: Dark
-            fields:
-              - type: file
-                name: optimized
-                label: Optimized (WEBP or similar)
-              - type: file
-                name: fallback
-                label: Fallback (JPG or PNG)
-      - type: select
-        name: palette
-        label: Color Palette
-        config:
-          source:
-            type: custom
-          options:
-            - default
-      - type: field_group
-        name: palettes
-        label: Palettes
-        hidden: true
-        fields:
-          - type: field_group
-            name: default
-            label: Default
-            fields:
-              - type: include
-                name: include_palette
-                label: Palette
-                template: palette
-  - type: list
-    name: disableKinds
-    label: Disable Kinds
-    description: Enable disabling of all pages of the specified Kinds.
-    hidden: true
+    - type: field_group
+      name: light
+      label: Light
+      fields:
+      - type: file
+        name: optimized
+        label: Optimized (WEBP or similar)
+      - type: file
+        name: fallback
+        label: Fallback (JPG or PNG)
+    - type: field_group
+      name: dark
+      label: Dark
+      fields:
+      - type: file
+        name: optimized
+        label: Optimized (WEBP or similar)
+      - type: file
+        name: fallback
+        label: Fallback (JPG or PNG)
+  - type: select
+    name: palette
+    label: Color Palette
     config:
       source:
         type: custom
       options:
-        - page
-        - home
-        - section
-        - taxonomy
-        - taxonomyTerm
-        - RSS
-        - sitemap
-        - robotsTXT
-        - '404'
-      use_select: true
-  - type: boolean
-    name: uglyURLs
-    label: Ugly URLs
-    description: >-
-      When enabled, creates URL of the form /filename.html instead of
-      /filename/.
+      - default
+  - type: field_group
+    name: palettes
+    label: Palettes
     hidden: true
+    fields:
+    - type: field_group
+      name: default
+      label: Default
+      fields:
+      - type: include
+        name: include_palette
+        label: Palette
+        template: palette
+- type: list
+  name: disableKinds
+  label: Disable Kinds
+  description: Enable disabling of all pages of the specified Kinds.
+  hidden: true
+  config:
+    source:
+      type: custom
+    options:
+    - page
+    - home
+    - section
+    - taxonomy
+    - taxonomyTerm
+    - RSS
+    - sitemap
+    - robotsTXT
+    - '404'
+    use_select: true
+- type: boolean
+  name: uglyURLs
+  label: Ugly URLs
+  description: When enabled, creates URL of the form /filename.html instead of /filename/.
+  hidden: true
