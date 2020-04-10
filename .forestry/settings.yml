@@ -4,77 +4,78 @@ auto_deploy: false
 admin_path: static/admin
 webhook_url: https://api.stackbit.com/project/5e8fe389b67cf500194f42f6/webhook/forestry
 sections:
-- type: document
-  path: config.yaml
-  label: Global site config
-  templates:
-  - config
-- type: document
-  path: content/_index.md
-  label: Home
-  templates:
-  - index
-- type: directory
-  path: content
-  label: Page
-  create: all
-  match: "**/*"
-  exclude: "{_index.md,store.md,faq.md,about.md}"
-  templates:
-  - page
-- type: document
-  path: content/store.md
-  label: Store
-  templates:
-  - store
-- type: document
-  path: content/faq.md
-  label: FAQ
-  templates:
-  - faq
-- type: document
-  path: content/about.md
-  label: About
-  templates:
-  - about
-- type: directory
-  path: content/category
-  label: Categories
-  create: all
-  match: "**/*"
-  templates:
-  - categories
-- type: document
-  path: data/promotion.json
-  label: Promotion
-  templates:
-  - promotion
-- type: document
-  path: data/testimonials.json
-  label: Testimonials
-  templates:
-  - testimonials
-- type: directory
-  path: content/products
-  label: Product
-  create: all
-  match: "**/*"
-  templates:
-  - products
+  - type: document
+    path: config.yaml
+    label: Global site config
+    templates:
+      - config
+  - type: document
+    path: content/_index.md
+    label: Home
+    templates:
+      - index
+  - type: directory
+    path: content
+    label: Page
+    create: all
+    match: "**/*"
+    exclude: "{_index.md,store.md,faq.md,about.md}"
+    templates:
+      - page
+  - type: document
+    path: content/store.md
+    label: Store
+    templates:
+      - store
+  - type: document
+    path: content/faq.md
+    label: FAQ
+    templates:
+      - faq
+  - type: document
+    path: content/about.md
+    label: About
+    templates:
+      - about
+  - type: directory
+    path: content/category
+    label: Categories
+    create: all
+    match: "**/*"
+    templates:
+      - categories
+  - type: document
+    path: data/promotion.json
+    label: Promotion
+    templates:
+      - promotion
+  - type: document
+    path: data/testimonials.json
+    label: Testimonials
+    templates:
+      - testimonials
+  - type: directory
+    path: content/products
+    label: Product
+    create: all
+    match: "**/*"
+    templates:
+      - products
 upload_dir: static/images
 public_path: "/images"
-front_matter_path: ''
+front_matter_path: ""
 use_front_matter_path: false
 file_template: ":filename:"
 build:
   preview_env:
-  - HUGO_VERSION=0.53
-  - HUGO_ENV=staging
+    - HUGO_VERSION=0.53
+    - HUGO_ENV=staging
   preview_output_directory: public
   install_dependencies_command: npm install
   preview_docker_image: forestryio/hugo:node10
   mount_path: "/srv"
   working_dir: "/srv"
-  instant_preview_command: hugo server -D -E -F --port 8080 --bind 0.0.0.0 --renderToDisk
+  instant_preview_command:
+    hugo server -D -E -F --port 8080 --bind 0.0.0.0 --renderToDisk
     -d public
-version: '0.47'
+version: "0.53"
