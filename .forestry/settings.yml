@@ -67,13 +67,9 @@ front_matter_path: ''
 use_front_matter_path: false
 file_template: ":filename:"
 build:
-  preview_env:
-  - HUGO_ENV=staging
-  - HUGO_VERSION=0.47
   preview_output_directory: public
   preview_docker_image: node:10
   mount_path: "/srv"
   working_dir: "/srv"
-  instant_preview_command: hugo server -D -E -F --port 8080 --bind 0.0.0.0 --renderToDisk
-    -d public
+  instant_preview_command: npm run forestry:preview
 version: '0.47'
