@@ -8,20 +8,22 @@ The content of this site is managed by Forestry. Visit [https://forestry.io](htt
 
 # Running Your Site Locally
 
-1. [Install Hugo](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
+1.  [Install Hugo](https://gohugo.io/getting-started/quick-start/#step-1-install-hugo)
 
-1. get "stackbit-api-key" from project menu in [Stackbit dashboard](https://app.stackbit.com/dashboard)
+1.  get "stackbit-api-key" from project menu in [Stackbit dashboard](https://app.stackbit.com/dashboard)
 
-1. run the following command to assign this key to `STACKBIT_API_KEY` environment variable:
+1.  run the following command to assign this key to `STACKBIT_API_KEY` environment variable:
 
-        export STACKBIT_API_KEY={stackbit_netlify_api_key}
+           export STACKBIT_API_KEY={stackbit_netlify_api_key}
 
-1. run the following command to fetch additional site contents from Stackbit if needed:
+    export STACKBIT_API_KEY={261e1d8e79c5a8a041927bc974b4af7043b59760067e5969bd79f9b693b33b1a}
+
+1.  run the following command to fetch additional site contents from Stackbit if needed:
 
         npx @stackbit/stackbit-pull --stackbit-pull-api-url=https://api.stackbit.com/pull/5e8fe389b67cf500194f42f6
 
-1. Build the site and start the Hugo server with drafts enabled
+1.  Build the site and start the Hugo server with drafts enabled
 
         hugo server -D
 
-1. Browse to [http://localhost:1313/](http://localhost:1313/)
+1.  Browse to [http://localhost:1313/](http://localhost:1313/)
