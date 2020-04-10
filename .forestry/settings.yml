@@ -69,6 +69,8 @@ file_template: ":filename:"
 build:
   preview_env:
   - ENV=staging
+  - 'HUGO_VERSION=0.57.2  '
+  - HUGO_ENV=staging
   preview_output_directory: public
   install_dependencies_command: npm install
   preview_docker_image: forestryio/hugo:node10
