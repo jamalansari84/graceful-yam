@@ -14,6 +14,11 @@ command = "./stackbit-build.sh"
  [template]
  incoming-hooks = ["Forestry"]
 
+# A basic redirect rule
+[[redirects]]
+  from = "/*"
+  to = "/blog/:splat"
+  
 [[redirects]]
   from = "/old-path"
   to = "/new-path"
