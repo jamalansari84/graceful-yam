@@ -69,7 +69,7 @@ file_template: ":filename:"
 build:
   preview_env:
   - ENV=staging
-  - 'HUGO_VERSION=0.57.2  '
+  - 'HUGO_VERSION=0.47  '
   - HUGO_ENV=staging
   preview_output_directory: public
   install_dependencies_command: npm install
